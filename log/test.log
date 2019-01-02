@@ -1,0 +1,1766 @@
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "models"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (84.4ms)[0m  [1m[35mCREATE TABLE "models" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "num" varchar, "result" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (99.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (68.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20181206180931)[0m
+  [1m[35m (92.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2018-12-09 15:22:01.270257"], ["updated_at", "2018-12-09 15:22:01.270257"]]
+  [1m[35m (72.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-09 15:22:01.443851', '2018-12-09 15:22:01.443851', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-09 15:22:01.443851', '2018-12-09 15:22:01.443851', 298486374)[0m
+  [1m[35m (58.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+Laba10ControllerTest: test_should_not_equal
+-------------------------------------------
+Started GET "/laba10/output?v1=4" for 127.0.0.1 at 2018-12-09 18:22:01 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"4"}
+  [1m[36mModel Load (0.8ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.3ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "4"], ["result", "[{\"elem\":2.5},{\"elem\":2.05},{\"elem\":2.000609756097561}]"], ["created_at", "2018-12-09 15:22:01.775129"], ["updated_at", "2018-12-09 15:22:01.775129"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (4.4ms)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 1.4ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+Laba10ControllerTest: test_should_get_input
+-------------------------------------------
+Started GET "/laba10/input" for 127.0.0.1 at 2018-12-09 18:22:01 +0300
+Processing by Laba10Controller#input as HTML
+  Rendering laba10/input.html.erb within layouts/application
+  Rendered laba10/input.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 390ms (Views: 388.6ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------
+Laba10ControllerTest: test_should_get_output
+--------------------------------------------
+Started GET "/laba10/output" for 127.0.0.1 at 2018-12-09 18:22:02 +0300
+Processing by Laba10Controller#output as HTML
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (1.6ms)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.8ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-09 15:22:36.584758', '2018-12-09 15:22:36.584758', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-09 15:22:36.584758', '2018-12-09 15:22:36.584758', 298486374)[0m
+  [1m[35m (54.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+Laba10ControllerTest: test_should_not_equal
+-------------------------------------------
+Started GET "/laba10/output?v1=4" for 127.0.0.1 at 2018-12-09 18:22:36 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"4"}
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.3ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "4"], ["result", "[{\"elem\":2.5},{\"elem\":2.05},{\"elem\":2.000609756097561}]"], ["created_at", "2018-12-09 15:22:36.738507"], ["updated_at", "2018-12-09 15:22:36.738507"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (3.3ms)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.8ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-09 15:23:09.432408', '2018-12-09 15:23:09.432408', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-09 15:23:09.432408', '2018-12-09 15:23:09.432408', 298486374)[0m
+  [1m[35m (63.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+Laba10ControllerTest: test_should_get_input
+-------------------------------------------
+Started GET "/laba10/input" for 127.0.0.1 at 2018-12-09 18:23:09 +0300
+Processing by Laba10Controller#input as HTML
+  Rendering laba10/input.html.erb within layouts/application
+  Rendered laba10/input.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 220ms (Views: 210.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------
+Laba10ControllerTest: test_should_get_output
+--------------------------------------------
+Started GET "/laba10/output" for 127.0.0.1 at 2018-12-09 18:23:09 +0300
+Processing by Laba10Controller#output as HTML
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (3.8ms)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-09 15:23:36.551804', '2018-12-09 15:23:36.551804', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-09 15:23:36.551804', '2018-12-09 15:23:36.551804', 298486374)[0m
+  [1m[35m (49.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+Laba10ControllerTest: test_should_get_input
+-------------------------------------------
+Started GET "/laba10/input" for 127.0.0.1 at 2018-12-09 18:23:36 +0300
+Processing by Laba10Controller#input as HTML
+  Rendering laba10/input.html.erb within layouts/application
+  Rendered laba10/input.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 142ms (Views: 135.8ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------
+Laba10ControllerTest: test_should_get_output
+--------------------------------------------
+Started GET "/laba10/output" for 127.0.0.1 at 2018-12-09 18:23:36 +0300
+Processing by Laba10Controller#output as HTML
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (3.6ms)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-09 15:24:45.134657', '2018-12-09 15:24:45.134657', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-09 15:24:45.134657', '2018-12-09 15:24:45.134657', 298486374)[0m
+  [1m[35m (46.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+Laba10ControllerTest: test_should_get_input
+-------------------------------------------
+Started GET "/laba10/input" for 127.0.0.1 at 2018-12-09 18:24:45 +0300
+Processing by Laba10Controller#input as HTML
+  Rendering laba10/input.html.erb within layouts/application
+  Rendered laba10/input.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 138ms (Views: 131.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-09 15:25:03.296744', '2018-12-09 15:25:03.296744', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-09 15:25:03.296744', '2018-12-09 15:25:03.296744', 298486374)[0m
+  [1m[35m (67.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+Laba10ControllerTest: test_should_not_equal
+-------------------------------------------
+Started GET "/laba10/output?v1=4" for 127.0.0.1 at 2018-12-09 18:25:03 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"4"}
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "4"], ["result", "[{\"elem\":2.5},{\"elem\":2.05},{\"elem\":2.000609756097561}]"], ["created_at", "2018-12-09 15:25:03.423485"], ["updated_at", "2018-12-09 15:25:03.423485"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (3.5ms)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.8ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.8ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:01:48.476004', '2018-12-12 10:01:48.476004', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:01:48.476004', '2018-12-12 10:01:48.476004', 298486374)[0m
+  [1m[35m (70.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:02:05.931458', '2018-12-12 10:02:05.931458', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:02:05.931458', '2018-12-12 10:02:05.931458', 298486374)[0m
+  [1m[35m (62.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[36mModel Load (0.5ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:02:47.854033', '2018-12-12 10:02:47.854033', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:02:47.854033', '2018-12-12 10:02:47.854033', 298486374)[0m
+  [1m[35m (76.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:03:01.623761', '2018-12-12 10:03:01.623761', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:03:01.623761', '2018-12-12 10:03:01.623761', 298486374)[0m
+  [1m[35m (89.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[36mModel Load (0.7ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:04:16.978378', '2018-12-12 10:04:16.978378', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:04:16.978378', '2018-12-12 10:04:16.978378', 298486374)[0m
+  [1m[35m (58.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.6ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:05:30.031071', '2018-12-12 10:05:30.031071', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:05:30.031071', '2018-12-12 10:05:30.031071', 298486374)[0m
+  [1m[35m (57.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:06:01.921520', '2018-12-12 10:06:01.921520', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:06:01.921520', '2018-12-12 10:06:01.921520', 298486374)[0m
+  [1m[35m (93.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:06:26.108270', '2018-12-12 10:06:26.108270', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:06:26.108270', '2018-12-12 10:06:26.108270', 298486374)[0m
+  [1m[35m (63.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:06:52.251599', '2018-12-12 10:06:52.251599', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:06:52.251599', '2018-12-12 10:06:52.251599', 298486374)[0m
+  [1m[35m (58.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[36mModel Load (0.5ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:07:39.603099', '2018-12-12 10:07:39.603099', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:07:39.603099', '2018-12-12 10:07:39.603099', 298486374)[0m
+  [1m[35m (55.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:08:24.316471', '2018-12-12 10:08:24.316471', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:08:24.316471', '2018-12-12 10:08:24.316471', 298486374)[0m
+  [1m[35m (57.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+Started GET "/laba10/output?v1=4" for 127.0.0.1 at 2018-12-12 13:08:24 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"4"}
+  [1m[36mModel Load (0.3ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.3ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "4"], ["result", "[{\"elem\":2.5},{\"elem\":2.05},{\"elem\":2.000609756097561}]"], ["created_at", "2018-12-12 10:08:24.437036"], ["updated_at", "2018-12-12 10:08:24.437036"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (14.2ms)
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 1.1ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:08:58.760328', '2018-12-12 10:08:58.760328', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:08:58.760328', '2018-12-12 10:08:58.760328', 298486374)[0m
+  [1m[35m (52.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.3ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:09:28.998570', '2018-12-12 10:09:28.998570', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:09:28.998570', '2018-12-12 10:09:28.998570', 298486374)[0m
+  [1m[35m (214.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+Started GET "/laba10/output?v1=4" for 127.0.0.1 at 2018-12-12 13:09:29 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"4"}
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "4"], ["result", "[{\"elem\":2.5},{\"elem\":2.05},{\"elem\":2.000609756097561}]"], ["created_at", "2018-12-12 10:09:29.268399"], ["updated_at", "2018-12-12 10:09:29.268399"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (2.8ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.8ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.8ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:14:43.087233', '2018-12-12 10:14:43.087233', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:14:43.087233', '2018-12-12 10:14:43.087233', 298486374)[0m
+  [1m[35m (54.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.3ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "45"], ["result", "[{\"elem\":1.0},{\"elem\":1.0}]"], ["created_at", "2018-12-12 10:14:43.170803"], ["updated_at", "2018-12-12 10:14:43.170803"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+Started GET "/laba10/output?v1=4" for 127.0.0.1 at 2018-12-12 13:14:43 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"4"}
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "4"], ["result", "[{\"elem\":2.5},{\"elem\":2.05},{\"elem\":2.000609756097561}]"], ["created_at", "2018-12-12 10:14:43.196590"], ["updated_at", "2018-12-12 10:14:43.196590"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (2.8ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.6ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:15:00.702011', '2018-12-12 10:15:00.702011', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:15:00.702011', '2018-12-12 10:15:00.702011', 298486374)[0m
+  [1m[35m (53.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:15:36.606657', '2018-12-12 10:15:36.606657', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:15:36.606657', '2018-12-12 10:15:36.606657', 298486374)[0m
+  [1m[35m (63.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.3ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "45"], ["result", "[{\"elem\":1.0},{\"elem\":1.0}]"], ["created_at", "2018-12-12 10:15:36.700860"], ["updated_at", "2018-12-12 10:15:36.700860"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:15:49.137224', '2018-12-12 10:15:49.137224', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:15:49.137224', '2018-12-12 10:15:49.137224', 298486374)[0m
+  [1m[35m (57.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.3ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "45"], ["result", "[{\"elem\":1.0},{\"elem\":1.0}]"], ["created_at", "2018-12-12 10:15:49.223932"], ["updated_at", "2018-12-12 10:15:49.223932"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:16:00.554213', '2018-12-12 10:16:00.554213', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:16:00.554213', '2018-12-12 10:16:00.554213', 298486374)[0m
+  [1m[35m (74.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.3ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "45"], ["result", "[{\"elem\":1.0},{\"elem\":1.0}]"], ["created_at", "2018-12-12 10:16:00.658440"], ["updated_at", "2018-12-12 10:16:00.658440"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:16:07.441778', '2018-12-12 10:16:07.441778', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:16:07.441778', '2018-12-12 10:16:07.441778', 298486374)[0m
+  [1m[35m (53.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.3ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "45"], ["result", "[{\"elem\":1.0},{\"elem\":1.0}]"], ["created_at", "2018-12-12 10:16:07.525479"], ["updated_at", "2018-12-12 10:16:07.525479"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:16:22.280139', '2018-12-12 10:16:22.280139', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:16:22.280139', '2018-12-12 10:16:22.280139', 298486374)[0m
+  [1m[35m (95.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.3ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "45"], ["result", "[{\"elem\":1.0},{\"elem\":1.0}]"], ["created_at", "2018-12-12 10:16:22.406760"], ["updated_at", "2018-12-12 10:16:22.406760"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:16:35.216095', '2018-12-12 10:16:35.216095', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:16:35.216095', '2018-12-12 10:16:35.216095', 298486374)[0m
+  [1m[35m (72.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.3ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "45"], ["result", "[{\"elem\":1.0},{\"elem\":1.0}]"], ["created_at", "2018-12-12 10:16:35.317593"], ["updated_at", "2018-12-12 10:16:35.317593"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:17:42.023607', '2018-12-12 10:17:42.023607', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:17:42.023607', '2018-12-12 10:17:42.023607', 298486374)[0m
+  [1m[35m (48.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.3ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "45"], ["result", "[{\"elem\":1.0},{\"elem\":1.0}]"], ["created_at", "2018-12-12 10:17:42.104341"], ["updated_at", "2018-12-12 10:17:42.104341"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:18:01.978408', '2018-12-12 10:18:01.978408', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:18:01.978408', '2018-12-12 10:18:01.978408', 298486374)[0m
+  [1m[35m (75.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.3ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "45"], ["result", "[{\"elem\":1.0},{\"elem\":1.0}]"], ["created_at", "2018-12-12 10:18:02.084729"], ["updated_at", "2018-12-12 10:18:02.084729"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:18:12.794284', '2018-12-12 10:18:12.794284', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:18:12.794284', '2018-12-12 10:18:12.794284', 298486374)[0m
+  [1m[35m (49.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.3ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "45"], ["result", "[{\"elem\":1.0},{\"elem\":1.0}]"], ["created_at", "2018-12-12 10:18:12.872342"], ["updated_at", "2018-12-12 10:18:12.872342"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:19:33.655326', '2018-12-12 10:19:33.655326', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:19:33.655326', '2018-12-12 10:19:33.655326', 298486374)[0m
+  [1m[35m (62.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Destroy (0.2ms)[0m  [1m[31mDELETE FROM "models" WHERE "models"."id" = ?[0m  [["id", 298486374]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Destroy (0.1ms)[0m  [1m[31mDELETE FROM "models" WHERE "models"."id" = ?[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "45"], ["result", "[{\"elem\":1.0},{\"elem\":1.0}]"], ["created_at", "2018-12-12 10:19:33.750856"], ["updated_at", "2018-12-12 10:19:33.750856"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:20:01.578979', '2018-12-12 10:20:01.578979', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:20:01.578979', '2018-12-12 10:20:01.578979', 298486374)[0m
+  [1m[35m (53.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Destroy (0.2ms)[0m  [1m[31mDELETE FROM "models" WHERE "models"."id" = ?[0m  [["id", 298486374]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Destroy (0.1ms)[0m  [1m[31mDELETE FROM "models" WHERE "models"."id" = ?[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "45"], ["result", "[{\"elem\":1.0},{\"elem\":1.0}]"], ["created_at", "2018-12-12 10:20:01.666941"], ["updated_at", "2018-12-12 10:20:01.666941"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:20:24.094132', '2018-12-12 10:20:24.094132', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:20:24.094132', '2018-12-12 10:20:24.094132', 298486374)[0m
+  [1m[35m (94.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Destroy (0.2ms)[0m  [1m[31mDELETE FROM "models" WHERE "models"."id" = ?[0m  [["id", 298486374]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Destroy (0.1ms)[0m  [1m[31mDELETE FROM "models" WHERE "models"."id" = ?[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "45"], ["result", "[{\"elem\":1.0},{\"elem\":1.0}]"], ["created_at", "2018-12-12 10:20:24.223363"], ["updated_at", "2018-12-12 10:20:24.223363"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:20:46.321554', '2018-12-12 10:20:46.321554', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:20:46.321554', '2018-12-12 10:20:46.321554', 298486374)[0m
+  [1m[35m (59.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Destroy (0.2ms)[0m  [1m[31mDELETE FROM "models" WHERE "models"."id" = ?[0m  [["id", 298486374]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Destroy (0.1ms)[0m  [1m[31mDELETE FROM "models" WHERE "models"."id" = ?[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "45"], ["result", "[{\"elem\":1.0},{\"elem\":1.0}]"], ["created_at", "2018-12-12 10:20:46.414678"], ["updated_at", "2018-12-12 10:20:46.414678"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:21:33.217889', '2018-12-12 10:21:33.217889', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:21:33.217889', '2018-12-12 10:21:33.217889', 298486374)[0m
+  [1m[35m (56.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Destroy (0.2ms)[0m  [1m[31mDELETE FROM "models" WHERE "models"."id" = ?[0m  [["id", 298486374]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Destroy (0.1ms)[0m  [1m[31mDELETE FROM "models" WHERE "models"."id" = ?[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "45"], ["result", "[{\"elem\":1.0},{\"elem\":1.0}]"], ["created_at", "2018-12-12 10:21:33.306774"], ["updated_at", "2018-12-12 10:21:33.306774"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mModel Load (0.0ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:21:54.233928', '2018-12-12 10:21:54.233928', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:21:54.233928', '2018-12-12 10:21:54.233928', 298486374)[0m
+  [1m[35m (52.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Destroy (0.2ms)[0m  [1m[31mDELETE FROM "models" WHERE "models"."id" = ?[0m  [["id", 298486374]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Destroy (0.1ms)[0m  [1m[31mDELETE FROM "models" WHERE "models"."id" = ?[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "45"], ["result", "[{\"elem\":1.0},{\"elem\":1.0}]"], ["created_at", "2018-12-12 10:21:54.323207"], ["updated_at", "2018-12-12 10:21:54.323207"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mModel Load (0.0ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:27:20.883190', '2018-12-12 10:27:20.883190', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:27:20.883190', '2018-12-12 10:27:20.883190', 298486374)[0m
+  [1m[35m (65.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+Started GET "/laba10/output?v1=4" for 127.0.0.1 at 2018-12-12 13:27:20 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"4"}
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "4"], ["result", "[{\"elem\":2.0},{\"elem\":2.0}]"], ["created_at", "2018-12-12 10:27:21.001451"], ["updated_at", "2018-12-12 10:27:21.001451"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 150ms (Views: 137.4ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:28:08.647276', '2018-12-12 10:28:08.647276', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:28:08.647276', '2018-12-12 10:28:08.647276', 298486374)[0m
+  [1m[35m (61.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+Started GET "/laba10/output?v1=4" for 127.0.0.1 at 2018-12-12 13:28:08 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"4"}
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "4"], ["result", "[{\"elem\":2.5},{\"elem\":2.05},{\"elem\":2.000609756097561}]"], ["created_at", "2018-12-12 10:28:08.764689"], ["updated_at", "2018-12-12 10:28:08.764689"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 131ms (Views: 118.3ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:28:33.306516', '2018-12-12 10:28:33.306516', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:28:33.306516', '2018-12-12 10:28:33.306516', 298486374)[0m
+  [1m[35m (49.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+Started GET "/laba10/output?v1=4" for 127.0.0.1 at 2018-12-12 13:28:33 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"4"}
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.3ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "4"], ["result", "[{\"elem\":2.1666666666666665},{\"elem\":2.0064102564102564},{\"elem\":2.0000102400262145}]"], ["created_at", "2018-12-12 10:28:33.408989"], ["updated_at", "2018-12-12 10:28:33.408989"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 127ms (Views: 113.7ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+Started GET "/laba10/output?v1=5" for 127.0.0.1 at 2018-12-12 13:28:33 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"5"}
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "5"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "5"], ["result", "[{\"elem\":3.0},{\"elem\":2.3333333333333335},{\"elem\":2.238095238095238},{\"elem\":2.2360688956433634}]"], ["created_at", "2018-12-12 10:28:33.528418"], ["updated_at", "2018-12-12 10:28:33.528418"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:28:40.110781', '2018-12-12 10:28:40.110781', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:28:40.110781', '2018-12-12 10:28:40.110781', 298486374)[0m
+  [1m[35m (45.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+Started GET "/laba10/output?v1=4" for 127.0.0.1 at 2018-12-12 13:28:40 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"4"}
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "4"], ["result", "[{\"elem\":2.1666666666666665},{\"elem\":2.0064102564102564},{\"elem\":2.0000102400262145}]"], ["created_at", "2018-12-12 10:28:40.211613"], ["updated_at", "2018-12-12 10:28:40.211613"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 130ms (Views: 116.8ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+Started GET "/laba10/output?v1=4" for 127.0.0.1 at 2018-12-12 13:28:40 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"4"}
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:29:53.243100', '2018-12-12 10:29:53.243100', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:29:53.243100', '2018-12-12 10:29:53.243100', 298486374)[0m
+  [1m[35m (52.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+Started GET "/laba10/output?v1=4" for 127.0.0.1 at 2018-12-12 13:29:53 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"4"}
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "4"], ["result", "[{\"elem\":2.1666666666666665},{\"elem\":2.0064102564102564},{\"elem\":2.0000102400262145}]"], ["created_at", "2018-12-12 10:29:53.354097"], ["updated_at", "2018-12-12 10:29:53.354097"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 128ms (Views: 114.4ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+Started GET "/laba10/output?v1=5" for 127.0.0.1 at 2018-12-12 13:29:53 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"5"}
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "5"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "5"], ["result", "[{\"elem\":2.25},{\"elem\":2.236111111111111}]"], ["created_at", "2018-12-12 10:29:53.474002"], ["updated_at", "2018-12-12 10:29:53.474002"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.7ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:30:10.530140', '2018-12-12 10:30:10.530140', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:30:10.530140', '2018-12-12 10:30:10.530140', 298486374)[0m
+  [1m[35m (66.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+Started GET "/laba10/output?v1=4" for 127.0.0.1 at 2018-12-12 13:30:10 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"4"}
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "4"], ["result", "[{\"elem\":2.0},{\"elem\":2.0}]"], ["created_at", "2018-12-12 10:30:10.651304"], ["updated_at", "2018-12-12 10:30:10.651304"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 131ms (Views: 118.0ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+Started GET "/laba10/output?v1=5" for 127.0.0.1 at 2018-12-12 13:30:10 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"5"}
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "5"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "5"], ["result", "[{\"elem\":2.625},{\"elem\":2.2648809523809526},{\"elem\":2.2362512514861397}]"], ["created_at", "2018-12-12 10:30:10.775154"], ["updated_at", "2018-12-12 10:30:10.775154"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:31:35.184314', '2018-12-12 10:31:35.184314', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:31:35.184314', '2018-12-12 10:31:35.184314', 298486374)[0m
+  [1m[35m (77.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+Started GET "/laba10/output?v1=4" for 127.0.0.1 at 2018-12-12 13:31:35 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"4"}
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "4"], ["result", "[{\"elem\":2.1666666666666665},{\"elem\":2.0064102564102564},{\"elem\":2.0000102400262145}]"], ["created_at", "2018-12-12 10:31:35.314553"], ["updated_at", "2018-12-12 10:31:35.314553"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 132ms (Views: 118.3ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+Started GET "/laba10/output?v1=4" for 127.0.0.1 at 2018-12-12 13:31:35 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"4"}
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:32:20.063051', '2018-12-12 10:32:20.063051', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:32:20.063051', '2018-12-12 10:32:20.063051', 298486374)[0m
+  [1m[35m (48.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+Laba10ControllerTest: test_should_not_equal
+-------------------------------------------
+Started GET "/laba10/output?v1=4" for 127.0.0.1 at 2018-12-12 13:32:20 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"4"}
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "4"], ["result", "[{\"elem\":2.0},{\"elem\":2.0}]"], ["created_at", "2018-12-12 10:32:20.168939"], ["updated_at", "2018-12-12 10:32:20.168939"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 129ms (Views: 115.5ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:34:03.197388', '2018-12-12 10:34:03.197388', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:34:03.197388', '2018-12-12 10:34:03.197388', 298486374)[0m
+  [1m[35m (57.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+Laba10ControllerTest: test_should_not_equal
+-------------------------------------------
+Started GET "/laba10/output?v1=4" for 127.0.0.1 at 2018-12-12 13:34:03 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"4"}
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "4"], ["result", "[{\"elem\":2.5},{\"elem\":2.05},{\"elem\":2.000609756097561}]"], ["created_at", "2018-12-12 10:34:03.309721"], ["updated_at", "2018-12-12 10:34:03.309721"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.4ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 145ms (Views: 130.5ms | ActiveRecord: 1.1ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:36:48.084905', '2018-12-12 10:36:48.084905', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:36:48.084905', '2018-12-12 10:36:48.084905', 298486374)[0m
+  [1m[35m (53.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+Laba10ControllerTest: test_should_not_equal
+-------------------------------------------
+Started GET "/laba10/output?v1=4" for 127.0.0.1 at 2018-12-12 13:36:48 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"4"}
+  [1m[36mModel Load (0.3ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.3ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "4"], ["result", "[{\"elem\":2.1666666666666665},{\"elem\":2.0064102564102564},{\"elem\":2.0000102400262145}]"], ["created_at", "2018-12-12 10:36:48.225016"], ["updated_at", "2018-12-12 10:36:48.225016"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 178ms (Views: 156.5ms | ActiveRecord: 1.1ms)
+Started GET "/laba10/output?v1=8" for 127.0.0.1 at 2018-12-12 13:36:48 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"8"}
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "8"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "8"], ["result", "[{\"elem\":3.6666666666666665},{\"elem\":2.9242424242424243},{\"elem\":2.829996859789606},{\"elem\":2.8284275600943953}]"], ["created_at", "2018-12-12 10:36:48.387344"], ["updated_at", "2018-12-12 10:36:48.387344"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:37:22.685078', '2018-12-12 10:37:22.685078', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:37:22.685078', '2018-12-12 10:37:22.685078', 298486374)[0m
+  [1m[35m (57.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+Laba10ControllerTest: test_should_not_equal
+-------------------------------------------
+Started GET "/laba10/output?v1=4" for 127.0.0.1 at 2018-12-12 13:37:22 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"4"}
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "4"], ["result", "[{\"elem\":2.0},{\"elem\":2.0}]"], ["created_at", "2018-12-12 10:37:22.796401"], ["updated_at", "2018-12-12 10:37:22.796401"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 133ms (Views: 119.3ms | ActiveRecord: 0.8ms)
+Started GET "/laba10/output?v1=8" for 127.0.0.1 at 2018-12-12 13:37:22 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"8"}
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "8"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "8"], ["result", "[{\"elem\":3.0},{\"elem\":2.833333333333333},{\"elem\":2.8284313725490193}]"], ["created_at", "2018-12-12 10:37:22.920829"], ["updated_at", "2018-12-12 10:37:22.920829"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 4ms (Views: 1.7ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:37:52.582807', '2018-12-12 10:37:52.582807', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:37:52.582807', '2018-12-12 10:37:52.582807', 298486374)[0m
+  [1m[35m (50.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+Laba10ControllerTest: test_should_not_equal
+-------------------------------------------
+Started GET "/laba10/output?v1=4" for 127.0.0.1 at 2018-12-12 13:37:52 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"4"}
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.3ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "4"], ["result", "[{\"elem\":2.0},{\"elem\":2.0}]"], ["created_at", "2018-12-12 10:37:52.693848"], ["updated_at", "2018-12-12 10:37:52.693848"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 137ms (Views: 122.6ms | ActiveRecord: 0.9ms)
+Started GET "/laba10/output?v1=8" for 127.0.0.1 at 2018-12-12 13:37:52 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"8"}
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "8"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "8"], ["result", "[{\"elem\":4.5},{\"elem\":3.138888888888889},{\"elem\":2.843780727630285},{\"elem\":2.8284685718801468}]"], ["created_at", "2018-12-12 10:37:52.821863"], ["updated_at", "2018-12-12 10:37:52.821863"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:39:33.125385', '2018-12-12 10:39:33.125385', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 10:39:33.125385', '2018-12-12 10:39:33.125385', 298486374)[0m
+  [1m[35m (52.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+Laba10ControllerTest: test_should_get_input
+-------------------------------------------
+Started GET "/laba10/input" for 127.0.0.1 at 2018-12-12 13:39:33 +0300
+Processing by Laba10Controller#input as HTML
+  Rendering laba10/input.html.erb within layouts/application
+  Rendered laba10/input.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 126ms (Views: 120.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+Started GET "/laba10/output?v1=4" for 127.0.0.1 at 2018-12-12 13:39:33 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"4"}
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "4"], ["result", "[{\"elem\":2.5},{\"elem\":2.05},{\"elem\":2.000609756097561}]"], ["created_at", "2018-12-12 10:39:33.371354"], ["updated_at", "2018-12-12 10:39:33.371354"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 11ms (Views: 3.0ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+Started GET "/laba10/output?v1=4" for 127.0.0.1 at 2018-12-12 13:39:33 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"4"}
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+Laba10ControllerTest: test_should_not_equal
+-------------------------------------------
+Started GET "/laba10/output?v1=4" for 127.0.0.1 at 2018-12-12 13:39:33 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"4"}
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "4"], ["result", "[{\"elem\":2.0},{\"elem\":2.0}]"], ["created_at", "2018-12-12 10:39:33.386981"], ["updated_at", "2018-12-12 10:39:33.386981"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 5ms (Views: 1.8ms | ActiveRecord: 0.8ms)
+Started GET "/laba10/output?v1=8" for 127.0.0.1 at 2018-12-12 13:39:33 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"8"}
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "8"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "8"], ["result", "[{\"elem\":3.6666666666666665},{\"elem\":2.9242424242424243},{\"elem\":2.829996859789606},{\"elem\":2.8284275600943953}]"], ["created_at", "2018-12-12 10:39:33.392456"], ["updated_at", "2018-12-12 10:39:33.392456"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 11:06:07.763845', '2018-12-12 11:06:07.763845', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 11:06:07.763845', '2018-12-12 11:06:07.763845', 298486374)[0m
+  [1m[35m (49.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+Laba10ControllerTest: test_should_get_input
+-------------------------------------------
+Started GET "/laba10/input" for 127.0.0.1 at 2018-12-12 14:06:07 +0300
+Processing by Laba10Controller#input as HTML
+  Rendering laba10/input.html.erb within layouts/application
+  Rendered laba10/input.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 139ms (Views: 131.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+Laba10ControllerTest: test_should_not_equal
+-------------------------------------------
+Started GET "/laba10/output?v1=4" for 127.0.0.1 at 2018-12-12 14:06:08 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"4"}
+  [1m[36mModel Load (0.3ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.4ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "4"], ["result", "[{\"elem\":2.5},{\"elem\":2.05},{\"elem\":2.000609756097561}]"], ["created_at", "2018-12-12 11:06:08.012871"], ["updated_at", "2018-12-12 11:06:08.012871"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 19ms (Views: 5.6ms | ActiveRecord: 1.3ms)
+Started GET "/laba10/output?v1=8" for 127.0.0.1 at 2018-12-12 14:06:08 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"8"}
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "8"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "8"], ["result", "[{\"elem\":3.0},{\"elem\":2.833333333333333},{\"elem\":2.8284313725490193}]"], ["created_at", "2018-12-12 11:06:08.026161"], ["updated_at", "2018-12-12 11:06:08.026161"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 6ms (Views: 2.7ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+Started GET "/laba10/output?v1=4" for 127.0.0.1 at 2018-12-12 14:06:08 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"4"}
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.3ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "4"], ["result", "[{\"elem\":2.1666666666666665},{\"elem\":2.0064102564102564},{\"elem\":2.0000102400262145}]"], ["created_at", "2018-12-12 11:06:08.035660"], ["updated_at", "2018-12-12 11:06:08.035660"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 7ms (Views: 3.3ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+Started GET "/laba10/output?v1=4" for 127.0.0.1 at 2018-12-12 14:06:08 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"4"}
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  [1m[36mCACHE Model Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 19:59:29.288077', '2018-12-12 19:59:29.288077', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2018-12-12 19:59:29.288077', '2018-12-12 19:59:29.288077', 298486374)[0m
+  [1m[35m (59.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+Laba10ControllerTest: test_should_not_equal
+-------------------------------------------
+Started GET "/laba10/output?v1=4" for 127.0.0.1 at 2018-12-12 22:59:29 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"4"}
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.3ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "4"], ["result", "[{\"elem\":2.1666666666666665},{\"elem\":2.0064102564102564},{\"elem\":2.0000102400262145}]"], ["created_at", "2018-12-12 19:59:29.789247"], ["updated_at", "2018-12-12 19:59:29.789247"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 191ms (Views: 177.5ms | ActiveRecord: 0.9ms)
+Started GET "/laba10/output?v1=8" for 127.0.0.1 at 2018-12-12 22:59:29 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"8"}
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "8"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "8"], ["result", "[{\"elem\":3.0},{\"elem\":2.833333333333333},{\"elem\":2.8284313725490193}]"], ["created_at", "2018-12-12 19:59:29.982738"], ["updated_at", "2018-12-12 19:59:29.982738"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.2ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 8ms (Views: 3.8ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+Laba10ControllerTest: test_should_get_input
+-------------------------------------------
+Started GET "/laba10/input" for 127.0.0.1 at 2018-12-12 22:59:29 +0300
+Processing by Laba10Controller#input as HTML
+  Rendering laba10/input.html.erb within layouts/application
+  Rendered laba10/input.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------
+Laba10ControllerTest: test_should_not_exist_two_equal_params
+------------------------------------------------------------
+Started GET "/laba10/output?v1=4" for 127.0.0.1 at 2018-12-12 22:59:29 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"4"}
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mModel Create (0.2ms)[0m  [1m[32mINSERT INTO "models" ("num", "result", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["num", "4"], ["result", "[{\"elem\":2.5},{\"elem\":2.05},{\"elem\":2.000609756097561}]"], ["created_at", "2018-12-12 19:59:29.999675"], ["updated_at", "2018-12-12 19:59:29.999675"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+Started GET "/laba10/output?v1=4" for 127.0.0.1 at 2018-12-12 22:59:30 +0300
+Processing by Laba10Controller#output as HTML
+  Parameters: {"v1"=>"4"}
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT  "models".* FROM "models" WHERE "models"."num" = ? LIMIT ?[0m  [["num", "4"], ["LIMIT", 1]]
+  Rendering laba10/output.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[36mModel Load (0.1ms)[0m  [1m[34mSELECT  "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendered laba10/output.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "models"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "models"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (111.4ms)[0m  [1m[35mCREATE TABLE "models" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "num" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "strres"[0m
+  [1m[35m (88.6ms)[0m  [1m[35mCREATE TABLE "strres" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "res" varchar, "model_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (88.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (67.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20181213131613)[0m
+  [1m[35m (66.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20181213131430),
+(20181206180931);
+
+[0m
+  [1m[35m (84.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2018-12-22 13:58:52.394987"], ["updated_at", "2018-12-22 13:58:52.394987"]]
+  [1m[35m (71.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "strres"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 13:58:52.610853', '2018-12-22 13:58:52.610853', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 13:58:52.610853', '2018-12-22 13:58:52.610853', 298486374)[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "strres"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 13:58:52.618929', '2018-12-22 13:58:52.618929', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 13:58:52.618929', '2018-12-22 13:58:52.618929', 298486374)[0m
+  [1m[35m (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "strres"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 13:58:52.626323', '2018-12-22 13:58:52.626323', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 13:58:52.626323', '2018-12-22 13:58:52.626323', 298486374)[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "strres"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 13:59:26.195095', '2018-12-22 13:59:26.195095', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 13:59:26.195095', '2018-12-22 13:59:26.195095', 298486374)[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "strres"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 13:59:26.203095', '2018-12-22 13:59:26.203095', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 13:59:26.203095', '2018-12-22 13:59:26.203095', 298486374)[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "strres"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 13:59:26.211265', '2018-12-22 13:59:26.211265', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 13:59:26.211265', '2018-12-22 13:59:26.211265', 298486374)[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "strres"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 14:01:13.787291', '2018-12-22 14:01:13.787291', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 14:01:13.787291', '2018-12-22 14:01:13.787291', 298486374)[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "strres"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 14:01:33.110268', '2018-12-22 14:01:33.110268', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 14:01:33.110268', '2018-12-22 14:01:33.110268', 298486374)[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "strres"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 14:03:28.071777', '2018-12-22 14:03:28.071777', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 14:03:28.071777', '2018-12-22 14:03:28.071777', 298486374)[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "strres"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 14:03:57.122786', '2018-12-22 14:03:57.122786', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 14:03:57.122786', '2018-12-22 14:03:57.122786', 298486374)[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "strres"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 14:05:15.768878', '2018-12-22 14:05:15.768878', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 14:05:15.768878', '2018-12-22 14:05:15.768878', 298486374)[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "strres"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 14:05:32.567040', '2018-12-22 14:05:32.567040', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 14:05:32.567040', '2018-12-22 14:05:32.567040', 298486374)[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "strres"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 14:06:39.173629', '2018-12-22 14:06:39.173629', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 14:06:39.173629', '2018-12-22 14:06:39.173629', 298486374)[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "strres"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 14:07:51.286897', '2018-12-22 14:07:51.286897', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 14:07:51.286897', '2018-12-22 14:07:51.286897', 298486374)[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "strres"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 14:09:59.125323', '2018-12-22 14:09:59.125323', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 14:09:59.125323', '2018-12-22 14:09:59.125323', 298486374)[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (88.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (98.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateModels (20181206180931)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "models" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "num" varchar, "result" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181206180931"]]
+  [1m[35m (103.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to RemoveResultFromModel (20181213131430)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "amodels" ("id" integer NOT NULL PRIMARY KEY, "num" varchar DEFAULT NULL, "result" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "amodels" ("id","num","result","created_at","updated_at")
+                     SELECT "id","num","result","created_at","updated_at" FROM "models"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "models"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "models" ("id" integer NOT NULL PRIMARY KEY, "num" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "models" ("id","num","created_at","updated_at")
+                     SELECT "id","num","created_at","updated_at" FROM "amodels"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "amodels"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181213131430"]]
+  [1m[35m (69.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateStrres (20181213131613)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "strres" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "res" varchar, "model_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181213131613"]]
+  [1m[35m (89.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2018-12-22 14:11:42.480831"], ["updated_at", "2018-12-22 14:11:42.480831"]]
+  [1m[35m (70.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "strres"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 14:11:53.167337', '2018-12-22 14:11:53.167337', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 14:11:53.167337', '2018-12-22 14:11:53.167337', 298486374)[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (75.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (87.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateModels (20181206180931)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "models" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "num" varchar, "result" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181206180931"]]
+  [1m[35m (75.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to RemoveResultFromModel (20181213131430)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "amodels" ("id" integer NOT NULL PRIMARY KEY, "num" varchar DEFAULT NULL, "result" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "amodels" ("id","num","result","created_at","updated_at")
+                     SELECT "id","num","result","created_at","updated_at" FROM "models"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "models"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "models" ("id" integer NOT NULL PRIMARY KEY, "num" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "models" ("id","num","created_at","updated_at")
+                     SELECT "id","num","created_at","updated_at" FROM "amodels"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "amodels"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181213131430"]]
+  [1m[35m (51.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateStrres (20181213131613)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "strres" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "res" varchar, "model_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181213131613"]]
+  [1m[35m (83.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2018-12-22 14:13:23.443928"], ["updated_at", "2018-12-22 14:13:23.443928"]]
+  [1m[35m (62.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "strres"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 14:13:35.811813', '2018-12-22 14:13:35.811813', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 14:13:35.811813', '2018-12-22 14:13:35.811813', 298486374)[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "strres"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 14:14:27.082628', '2018-12-22 14:14:27.082628', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 14:14:27.082628', '2018-12-22 14:14:27.082628', 298486374)[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "strres"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 14:17:13.254647', '2018-12-22 14:17:13.254647', 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 14:17:13.254647', '2018-12-22 14:17:13.254647', 298486374)[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.9ms)[0m  [1m[31mDELETE FROM "strres"[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 14:31:41.516464', '2018-12-22 14:31:41.516464', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "strres" ("res", "created_at", "updated_at", "id") VALUES ('MyString', '2018-12-22 14:31:41.516464', '2018-12-22 14:31:41.516464', 298486374)[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (80.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (87.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateModels (20181206180931)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "models" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "num" varchar, "result" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181206180931"]]
+  [1m[35m (90.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2018-12-22 14:32:05.364050"], ["updated_at", "2018-12-22 14:32:05.364050"]]
+  [1m[35m (67.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
